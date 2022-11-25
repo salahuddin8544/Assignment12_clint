@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaCarSide,FaBackspace,FaAmazonPay,FaHandPeace } from "react-icons/fa";
+import { FaCarSide,FaBackspace,FaAmazonPay } from "react-icons/fa";
 const OurServices = () => {
     return (
         <div className='my-7 bg-gray-200 py-7'>
@@ -19,7 +19,7 @@ const OurServices = () => {
                     </div>
                     </div>
                     </div>
-            <div className="card w-96 bg-base-100 shadow-xl sm:mt-4">
+            <div className="card w-96 bg-base-100 shadow-xl my-2">
                     <div className="card-body">
                     <div className='flex justify-start items-center'>
                     <FaBackspace className='text-orange-700 text-6xl'></FaBackspace>
