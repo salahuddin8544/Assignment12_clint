@@ -3,6 +3,7 @@ import Blog from '../../Blog/Blog';
 import Main from '../../Layout/Main';
 import Categories from '../../pages/Home/Categories/Categories';
 import Home from '../../pages/Home/Home/Home';
+import Products from '../../pages/Home/Products/Products';
 const router = createBrowserRouter([
     {
         path:'/',
@@ -22,7 +23,8 @@ const router = createBrowserRouter([
             },
             {
                 path:'/categoires/:id',
-                element:<Categories></Categories>
+                element:<Products></Products>,
+               loader:({params})=> fetch(`http://localhost:5000/categoires/${params.id}`)
             }
         ]
     }
