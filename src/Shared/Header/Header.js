@@ -12,8 +12,7 @@ const Header = () => {
       <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
         <li><a>Home</a></li>
         <li> <Link to='/blog'>Blog</Link> </li>
-        <li><a>Dashboard</a></li>
-        <li><a>Login</a></li>
+        <li> <Link to='/login'>Login</Link> </li>
       </ul>
     </div>
     <img src={logo} className='w-14 rounded-full' alt="" />
@@ -23,8 +22,7 @@ const Header = () => {
     <ul className="menu menu-horizontal p-0">
     <li> <Link to='/'>Home</Link> </li>
     <li> <Link to='/blog'>Blog</Link> </li>
-        <li><a>Dashboard</a></li>
-        <li><a>Login</a></li>
+    <li> <Link to='/login'>Login</Link> </li>
     </ul>
   </div>
   <div className="navbar-end">
