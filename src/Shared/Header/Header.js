@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 import logo from '../../assest/computer logo.png'
 const Header = () => {
     return (
@@ -10,7 +11,7 @@ const Header = () => {
       </label>
       <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
         <li><a>Home</a></li>
-        <li><a>Blog</a></li>
+        <li> <Link to='/blog'>Blog</Link> </li>
         <li><a>Dashboard</a></li>
         <li><a>Login</a></li>
       </ul>
@@ -20,8 +21,8 @@ const Header = () => {
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal p-0">
-    <li><a>Home</a></li>
-        <li><a>Blog</a></li>
+    <li> <Link to='/'>Home</Link> </li>
+    <li> <Link to='/blog'>Blog</Link> </li>
         <li><a>Dashboard</a></li>
         <li><a>Login</a></li>
     </ul>
