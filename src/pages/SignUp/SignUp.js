@@ -7,10 +7,17 @@ const SignUp = () => {
     const handleSignUp = event=>{
         event.preventDefault();
         const form = event.target;
+        const name = form.name.value;
        const email = form.email.value;
         const UserType = form.userType.value;
         const password = form.password.value;
-        console.log(email,password,UserType);
+      const users ={
+        name,
+        email,
+        UserType
+
+      }
+
         createUser(email,password)
         .then(result=>{
           const user = result.user;

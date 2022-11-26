@@ -1,7 +1,7 @@
 [
     {
-        "id": "637f3b8d48dbdc0bab510cf7",
         "category_id": "1",
+        "sellerName": "Aminul Islam",
         "index": 0,
         "originalPrice": "55,000",
         "sellerLocation": "Zindabazar, Sylhet ,BD",
@@ -13,13 +13,13 @@
         "processor": "core i7",
         "color":"Black",
         "monitorSize": "Dell 21'' Led ",
-        "photoURL": "https://5.imimg.com/data5/SELLER/Default/2022/11/LO/UN/PR/158687507/dell-cpudell-hp-lenovo-i7-2nd-gen-500x500.jpg",
+        "photoURL": "https://images.unsplash.com/photo-1587831990711-23ca6441447b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZGVza3RvcCUyMGNvbXB1dGVyfGVufDB8fDB8fA%3D%3D&w=1000&q=80",
         "title": "Hp Compleate Desktop  ",
         "discription": "> Brand:- Dell & HP and Lenovo> Processor :- i7 > Generation :- 1st>Ram :- 8Gb RAM> Keyboard Mouse > VGA Cable> Power Cable > 1 Month Replacement Warranty"
       },
       {
-        "id": "637f3b8d3ed9565ee3c1549f",
         "category_id": "2",
+        "sellerName": "Tamima",
         "index": 3,
         "originalPrice": "220,000",
         "sellerLocation": "Amborkana, Sylhet ,BD",
@@ -31,13 +31,13 @@
         "processor": " Processor (2.3GHz up to 3.6GHz) core i5",
         "color":"Gray",
         "monitorSize": "21.5-inch LED-Backlit Display ",
-        "photoURL": "https://techcrunch.com/wp-content/uploads/2020/08/00100trPORTRAIT_00100_BURST20200804130253371_COVER.jpg ",
+        "photoURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQt8__gNf2U7Vx5WI9Lu723M5xp3pdte8dl_mSdR3rOFy4GND14-Hwcv1pk44AzyfB6uOg&usqp=CAU",
         "title": "Apple iMac 21.5-inch Full HD",
         "discription": "Apple iMac 21.5-inch Full HD Display, Core i5 7th Gen, 8GB RAM, 256GB SSD (MHK03ZP/A)"
       },
       {
-        "id": "637f3b8d81fb0489831de03a",
         "category_id": "3",
+        "sellerName": "Kabir",
         "index": 5,
         "originalPrice": "73,000",
         "sellerLocation": "Kompaniganj,Comilla,BD",
@@ -49,26 +49,8 @@
         "processor": " Intel Core i5-9400F (6-core 2.9 GHz, up to 4.1 GHz)",
         "color":"Black",
         "monitorSize": "Product Size:375*245*20mm  ",
-        "photoURL": "https://5.imimg.com/data5/SELLER/Default/2021/12/JT/WV/WK/3185162/93591-500x500.jpg",
+        "photoURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBFlm6yajKgIU4BtnfpUVBZkKP9uYFCo7S7W080sgWS5k7y3T-GqXatXdxL86MwHjbQhM&usqp=CAU",
         "title": " Hp Laptop 4430s",
         "discription": "Battery:6Cells 3S2P 4400mAh 48.8wh > Camera:Built-in 1.3Mmeet > Keyboard:With backlit keyboard > Back cover: Metal "
-      },
-      {
-        "id": "637f3b8d49d4f158fb3a4cde",
-        "category_id": "4",
-        "index": 11,
-        "originalPrice": "22,000",
-        "sellerLocation": "Civies,Citagong ,BD",
-        "reselPrice": "11,000",
-        "yearsOfUse": "1 years ",
-        "brand": "Lenovo Tablet ",
-        "memory": "4 GB ",
-        "hardDrive": "  32GB",
-        "processor": " 2.2 GHz Snapdragon ",
-        "color":"Pink",
-        "monitorSize": " 9.7 inches  ",
-        "photoURL": " https://i.ytimg.com/vi/BEsBWtR_Pwo/maxresdefault.jpg",
-        "title": "ANDROID TABLETS",
-        "discription": "The Lenovo Tab P12 Pro is an entertainment, gaming,that's built for use outdoors and indoors, with an all-day battery and bright 12.6 2K AMOLED display"
       }
 ]

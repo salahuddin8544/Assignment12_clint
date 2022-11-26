@@ -29,7 +29,7 @@ const Header = () => {
         </>
         :
         <>
-            <li><Link to={'/login'}>Login</Link></li>
+
         </>
        }
         
@@ -44,18 +44,26 @@ const Header = () => {
     {
        user?.uid?<>
            <Link class="m-0 p-0" to={'/dashboard'}><button className='mt-3'>Dashboard</button></Link>
-           <Link class="m-0 p-0" ><button onClick={signOut} className='mt-3'>LogOut</button></Link>
+          
         </>
         :
         <>
-            <li><Link to={'/login'}>Login</Link></li>
+
         </>
        }
  
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn">Get started</a>
+  {
+       user?.uid?<>
+           <Link class="m-0 p-0" ><button onClick={signOut} className='btn btn-success'>LogOut</button></Link>
+        </>
+        :
+        <>
+            <Link to={'/login'}><button className="btn btn-success">Login</button></Link>
+        </>
+       }
   </div>
 </div>
     );
