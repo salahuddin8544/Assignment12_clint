@@ -18,6 +18,8 @@ const SignUp = () => {
 
       }
 
+      
+
         createUser(email,password)
         .then(result=>{
           const user = result.user;
@@ -29,9 +31,22 @@ const SignUp = () => {
         console.log(userInfo);
         updateUser(userInfo)
         .then(()=>{
-          navigate('/')
         })
         .catch(err=>console.log(err))
+
+        fetch('http://localhost:5000/users', {
+        method:'POST',
+        headers:{
+          'content-type': 'application/json'
+        },
+        body:JSON.stringify(users)
+      })
+      .then(data=>{
+          console.log(data)
+          
+      })
+
+        
     })
         .catch(err=>console.log(err))
     }

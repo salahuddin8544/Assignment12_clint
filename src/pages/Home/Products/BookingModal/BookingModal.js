@@ -17,7 +17,6 @@ const BookingModal = ({product}) => {
           photo:photoURL,
            Name: title,
            Price: reselPrice,
-           email
         }
         fetch('http://localhost:5000/bookings', {
           method:'POST',
