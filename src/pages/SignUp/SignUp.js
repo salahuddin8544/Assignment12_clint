@@ -2,14 +2,14 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../context/AuthProvider';
 import { Link } from 'react-router-dom';
 const SignUp = () => {
-    const {createUer} = useContext(AuthContext)
+    const {createUser} = useContext(AuthContext)
     const handleSignUp = event=>{
         event.preventDefault();
         const form = event.target;
       const email = form.email.value;
         const password = form.password.value;
         console.log(email,password);
-        createUer(email,password)
+        createUser(email,password)
         .then(result=>{
           const user = result.user;
           console.log(user);

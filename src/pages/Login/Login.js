@@ -1,10 +1,14 @@
 import React, { useContext } from 'react';
 import { FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider';
 
 const Login = () => {
     const {login,GoogleUser} = useContext(AuthContext)
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
+
     const handleSubmit = event=>{
         const form = event.target;
         const email = form.email.value;
@@ -13,7 +17,7 @@ const Login = () => {
           login(email,password)
           .then(result=>{
             const user = result.user;
-            // navigate(from, { replace: true });
+            navigate(from ,{replace:true})
             console.log(user);
           })
           .catch(error=> console.log(error))
@@ -23,7 +27,7 @@ const Login = () => {
     GoogleUser()
     .then(result=>{
       const user =result.user;
-    //   navigate(from, { replace: true });
+    navigate(from,{replace: true})
       console.log(user);
     })
     .catch(err=>console.log(err))

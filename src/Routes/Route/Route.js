@@ -6,6 +6,7 @@ import Home from '../../pages/Home/Home/Home';
 import Products from '../../pages/Home/Products/Products';
 import Login from '../../pages/Login/Login';
 import SignUp from '../../pages/SignUp/SignUp';
+import PrivateRoute from './../PrivateRoute/PrivateRoute';
 const router = createBrowserRouter([
     {
         path:'/',
@@ -33,7 +34,7 @@ const router = createBrowserRouter([
             },
             {
                 path:'/categoires/:id',
-                element:<Products></Products>,
+                element:<PrivateRoute><Products></Products></PrivateRoute>,
                loader:({params})=> fetch(`http://localhost:5000/categoires/${params.id}`)
             }
         ]
