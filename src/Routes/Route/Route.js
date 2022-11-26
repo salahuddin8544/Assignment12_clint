@@ -5,8 +5,10 @@ import Categories from '../../pages/Home/Categories/Categories';
 import Home from '../../pages/Home/Home/Home';
 import Products from '../../pages/Home/Products/Products';
 import Login from '../../pages/Login/Login';
+import img  from '..//../assest/4o4.jpg'
 import SignUp from '../../pages/SignUp/SignUp';
 import PrivateRoute from './../PrivateRoute/PrivateRoute';
+
 const router = createBrowserRouter([
     {
         path:'/',
@@ -38,6 +40,12 @@ const router = createBrowserRouter([
                loader:({params})=> fetch(`http://localhost:5000/categoires/${params.id}`)
             }
         ]
+    },
+    {
+        path:'*',
+        element: <div className='w-96 h-96 mx-auto'>
+            <img className='' src={img} alt="" />
+        </div>
     }
 ])
 export default router

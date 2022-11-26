@@ -1,19 +1,31 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../context/AuthProvider';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 const SignUp = () => {
-    const {createUser} = useContext(AuthContext)
+    const {createUser,updateUser} = useContext(AuthContext)
+    const navigate = useNavigate();
     const handleSignUp = event=>{
         event.preventDefault();
         const form = event.target;
-      const email = form.email.value;
+       const email = form.email.value;
+        const UserType = form.userType.value;
         const password = form.password.value;
-        console.log(email,password);
+        console.log(email,password,UserType);
         createUser(email,password)
         .then(result=>{
           const user = result.user;
           console.log(user);
+
+          const userInfo={
+            displayName: form.name.value
+        }
+        console.log(userInfo);
+        updateUser(userInfo)
+        .then(()=>{
+          navigate('/')
         })
+        .catch(err=>console.log(err))
+    })
         .catch(err=>console.log(err))
     }
     return (
@@ -26,7 +38,7 @@ const SignUp = () => {
                 <label className="label">
                   <span className="label-text">Name</span>
                 </label>
-                <input type="text" placeholder="Your name" className="input input-bordered" />
+                <input type="name" name='name' placeholder="Your name" className="input input-bordered" />
               </div>
               <div className="form-control">
                 <label className="label">
@@ -38,7 +50,16 @@ const SignUp = () => {
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
+             
                 <input type="text" name='password' placeholder="password" className="input input-bordered" />
+              </div>
+              <div className="form-control">
+              <label > Select account type buyer or seller </label>
+              <select   className="mt-3 select select-primary w-full max-w-xs" name='userType' >
+              <option value="buyer">Buyer</option>
+              <option value="seller">Seller</option>
+              
+            </select>
               </div>
               <div className="form-control mt-6">
                 <input type="submit" className='btn btn-success' value="Submit" />
