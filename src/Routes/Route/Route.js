@@ -8,6 +8,7 @@ import Login from '../../pages/Login/Login';
 import img  from '..//../assest/4o4.jpg'
 import SignUp from '../../pages/SignUp/SignUp';
 import PrivateRoute from './../PrivateRoute/PrivateRoute';
+import Dashboard from '../../Dashboard/Dashboard';
 
 const router = createBrowserRouter([
     {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
                loader:({params})=> fetch(`http://localhost:5000/categoires/${params.id}`)
             }
         ]
+    },
+    {
+        path:'/dashboard',
+        element:<Dashboard></Dashboard>
     },
     {
         path:'*',

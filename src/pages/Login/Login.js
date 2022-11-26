@@ -54,8 +54,8 @@ const Login = () => {
                 <input type="submit" className='btn btn-success' value="Submit" />
               </div>
             </form>
-            <button onClick={handleGoogle} className='btn btn-dark mt-2'> <FaGoogle className='mr-2'></FaGoogle>  Login with Google</button>
-            <p className='text-center py-4'>New to Photography? <Link className='text-orange-700' to={'/signup'}>SignUp</Link> </p>
+            <button onClick={handleGoogle} className='btn btn-primary mx-8 text-white'> <FaGoogle className='mr-2'></FaGoogle>Login with Google</button>
+            <p className='text-center py-4'>New to <span className='text-orange-700'>C</span>omputer<span className='text-orange-700'>H</span>ome? <Link className='text-orange-700' to={'/signup'}>SignUp</Link> </p>
           </div>
         </div>
       </div>
