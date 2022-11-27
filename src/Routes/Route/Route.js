@@ -8,7 +8,13 @@ import Login from '../../pages/Login/Login';
 import img  from '..//../assest/4o4.jpg'
 import SignUp from '../../pages/SignUp/SignUp';
 import PrivateRoute from './../PrivateRoute/PrivateRoute';
-import Dashboard from '../../Dashboard/Dashboard';
+import MyOrders from '../../Dashboard/MyOrders/MyOrders';
+import AddPoducts from '../../Dashboard/AddProduct/AddPoducts';
+import AllUsers from '../../Dashboard/AllUsers/AllUsers';
+import SeeReport from '../../Dashboard/SeeReport/SeeReport';
+import DashBoardLayout from '../../Layout/DashBoardLayout/DashBoardLayout';
+import Payment from '../../Dashboard/Payment/Payment';
+
 
 const router = createBrowserRouter([
     {
@@ -44,8 +50,32 @@ const router = createBrowserRouter([
     },
     {
         path:'/dashboard',
-        element:<Dashboard></Dashboard>
+        element: <PrivateRoute><DashBoardLayout></DashBoardLayout> </PrivateRoute>,
+        children:[
+            {
+                path:'/dashboard',
+                element: <MyOrders></MyOrders>
+            },
+            {
+                path:'/dashboard/addproducts',
+                element: <AddPoducts></AddPoducts>
+            },
+            {
+                path:'/dashboard/allusers',
+                element: <AllUsers></AllUsers>
+            },
+            {
+                path:'/dashboard/seereport',
+                element: <SeeReport></SeeReport>
+            },
+            {
+                path:'/dashboard/payment/:id',
+                element: <Payment></Payment>,
+                loader:({params})=> fetch(`http://localhost:5000/bookings/${params.id}`)
+            },
+        ]
     },
+
     {
         path:'*',
         element: <div className='w-96 h-96 mx-auto'>
