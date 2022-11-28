@@ -1,7 +1,7 @@
 
 import React from "react";
 
-const SingleProduct = ({product,setProduct}) => {
+const SingleProduct = ({product,setProduct,report,setReport}) => {
      const {title,photoURL,brand,reselPrice,originalPrice,yearsOfUse,sellerLocation,sellerName} = product;
      
     const d = new Date();
@@ -22,6 +22,7 @@ const SingleProduct = ({product,setProduct}) => {
               <label htmlFor="my-modal-3"
                onClick={()=>setProduct(product)}
               className="btn btn-primary">Book Now</label>
+              <label htmlFor="my-modal-2" onClick={()=>setProduct(product)} className="btn btn-primary">Report</label>
           </div>
         </div>
       </div>
