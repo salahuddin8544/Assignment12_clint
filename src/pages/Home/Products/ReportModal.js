@@ -19,6 +19,7 @@ const ReportModal = ({product}) => {
            email,
            comment
         }
+        console.log(userReport);
         fetch('http://localhost:5000/reports', {
           method:'POST',
           headers:{
