@@ -15,6 +15,7 @@ import SeeReport from '../../Dashboard/SeeReport/SeeReport';
 import DashBoardLayout from '../../Layout/DashBoardLayout/DashBoardLayout';
 import Payment from '../../Dashboard/Payment/Payment';
 import MyProdeuct from '../../Dashboard/MyProducts/MyProdeuct';
+import AdminRoute from './AdminRoute/AdminRoute';
 
 
 const router = createBrowserRouter([
@@ -45,7 +46,7 @@ const router = createBrowserRouter([
             {
                 path:'/categoires/:id',
                 element:<PrivateRoute><Products></Products></PrivateRoute>,
-               loader:({params})=> fetch(`http://localhost:5000/categoires/${params.id}`)
+               loader:({params})=> fetch(`https://assignment12-server-beta.vercel.app/categoires/${params.id}`)
             }
         ]
     },
@@ -63,11 +64,11 @@ const router = createBrowserRouter([
             },
             {
                 path:'/dashboard/allusers',
-                element: <AllUsers></AllUsers>
+                element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
             },
             {
                 path:'/dashboard/seereport',
-                element: <SeeReport></SeeReport>
+                element: <AdminRoute><SeeReport></SeeReport></AdminRoute>
             },
             {
                 path:'/dashboard/myproducts',
@@ -76,7 +77,7 @@ const router = createBrowserRouter([
             {
                 path:'/dashboard/payment/:id',
                 element: <Payment></Payment>,
-                loader:({params})=> fetch(`http://localhost:5000/bookings/${params.id}`)
+                loader:({params})=> fetch(`https://assignment12-server-beta.vercel.app/bookings/${params.id}`)
             },
         ]
     },

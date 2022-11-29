@@ -40,8 +40,14 @@ console.log(isAdmin,isSeller)
           {/* {isAdmin&& */}
           {
               <> 
-               <li> <NavLink className="mt-4 bg-slate-300" to='/dashboard/allusers'> All Users</NavLink></li>
-               <li> <NavLink className="mt-4 bg-slate-300" to='/dashboard/seereport' > See Report </NavLink> </li>
+             { 
+              isAdmin && 
+              <li> <NavLink className="mt-4 bg-slate-300" to='/dashboard/allusers'> All Users</NavLink></li> 
+              &&
+             <li> <NavLink className="mt-4 bg-slate-300" to='/dashboard/seereport' > See Report </NavLink> </li>
+             }
+              
+               
                
              </>
              

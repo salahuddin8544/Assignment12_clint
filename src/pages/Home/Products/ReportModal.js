@@ -20,7 +20,7 @@ const ReportModal = ({product}) => {
            comment
         }
         console.log(userReport);
-        fetch('http://localhost:5000/reports', {
+        fetch('https://assignment12-server-beta.vercel.app/reports', {
           method:'POST',
           headers:{
             'content-type': 'application/json'

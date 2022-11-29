@@ -6,7 +6,7 @@ import { AuthContext } from '../../pages/context/AuthProvider';
 const MyOrders = () => {
     const {user} = useContext(AuthContext);
 
-    const url = `http://localhost:5000/bookings?email=${user?.email}`
+    const url = `https://assignment12-server-beta.vercel.app/bookings?email=${user?.email}`
     // use react query for get user product order info 
     const {data:orders =[]} = useQuery ({
         queryKey:['bookings',user?.email],

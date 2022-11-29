@@ -6,7 +6,7 @@ import Loading from '../../Loading/Loading';
 const SeeReport = () => {
     
     // get all  users from database and set it ui 
-    const url = `http://localhost:5000/reports`;
+    const url = `https://assignment12-server-beta.vercel.app/reports`;
     const {data:users,isLoading,refetch} = useQuery({
        queryKey:['users'],
        queryFn: async() => {

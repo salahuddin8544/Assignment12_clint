@@ -8,7 +8,7 @@ const CheckOutForm = ({booking}) => {
   const elements = useElements()
   const {Price} = booking;
   useEffect(()=>{
-    fetch('http://localhost:5000/create-payment-intent',{
+    fetch('https://assignment12-server-beta.vercel.app/create-payment-intent',{
       method:'POST',
       headers:{
         'Content-Type': 'application/json',

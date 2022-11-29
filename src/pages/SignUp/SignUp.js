@@ -1,7 +1,6 @@
 import React, { useContext,useState } from 'react';
 import { AuthContext } from '../context/AuthProvider';
 import { Link, useNavigate } from 'react-router-dom';
-import Toast  from 'react-hot-toast'
 import useToken from '../../Hook/useToken/useToken';
 const SignUp = () => {
   const navigate = useNavigate();
@@ -28,6 +27,7 @@ const SignUp = () => {
 
         createUser(email,password)
         .then(result=>{
+          setCreatedUserEmail(email)
           const user = result.user;
           console.log(user);
           const userInfo={
@@ -37,13 +37,13 @@ const SignUp = () => {
         updateUser(userInfo)
         .then(()=>{
           
-
+        
           
         })
         .catch(err=>console.log(err))
 
 
-        fetch('http://localhost:5000/users', {
+        fetch('https://assignment12-server-beta.vercel.app/users', {
         method:'POST',
         headers:{
           'content-type': 'application/json'
@@ -52,10 +52,9 @@ const SignUp = () => {
       })
       .then(data=>{
           console.log(data)
-          
+             setCreatedUserEmail(email)
           if(data.acknowledged){
-            setCreatedUserEmail(email)
-            Toast('user Created SuccessFully')
+         
            
         }
           
