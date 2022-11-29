@@ -1,19 +1,28 @@
-import React, { useContext } from 'react';
+import React, { useContext,useState } from 'react';
 import { AuthContext } from '../context/AuthProvider';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Toast  from 'react-hot-toast'
+import useToken from '../../Hook/useToken/useToken';
 const SignUp = () => {
+  const navigate = useNavigate();
+  const [createdUserEmail,setCreatedUserEmail] = useState('')
+    const [token] = useToken(createdUserEmail)
+
+    if(token){
+        navigate('/')
+    }
     const {createUser,updateUser} = useContext(AuthContext)
     const handleSignUp = event=>{
         event.preventDefault();
         const form = event.target;
         const name = form.name.value;
        const email = form.email.value;
-        const UserType = form.userType.value;
+        const role = form.role.value;
         const password = form.password.value;
       const users ={
         name,
         email,
-        UserType
+        role
 
       }
 
@@ -21,15 +30,18 @@ const SignUp = () => {
         .then(result=>{
           const user = result.user;
           console.log(user);
-
           const userInfo={
             displayName: form.name.value
         }
         console.log(userInfo);
         updateUser(userInfo)
         .then(()=>{
+          
+
+          
         })
         .catch(err=>console.log(err))
+
 
         fetch('http://localhost:5000/users', {
         method:'POST',
@@ -41,9 +53,15 @@ const SignUp = () => {
       .then(data=>{
           console.log(data)
           
+          if(data.acknowledged){
+            setCreatedUserEmail(email)
+            Toast('user Created SuccessFully')
+           
+        }
+          
       })
         
-    })
+   })
         .catch(err=>console.log(err))
     }
     return (
@@ -73,7 +91,7 @@ const SignUp = () => {
               </div>
               <div className="form-control">
               <label > Select account type buyer or seller </label>
-              <select   className="mt-3 select select-primary w-full max-w-xs" name='userType' >
+              <select   className="mt-3 select select-primary w-full max-w-xs" name='role' >
               <option value="buyer">Buyer</option>
               <option value="seller">Seller</option>
               

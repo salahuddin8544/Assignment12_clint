@@ -14,6 +14,7 @@ import AllUsers from '../../Dashboard/AllUsers/AllUsers';
 import SeeReport from '../../Dashboard/SeeReport/SeeReport';
 import DashBoardLayout from '../../Layout/DashBoardLayout/DashBoardLayout';
 import Payment from '../../Dashboard/Payment/Payment';
+import MyProdeuct from '../../Dashboard/MyProducts/MyProdeuct';
 
 
 const router = createBrowserRouter([
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
             {
                 path:'/dashboard/seereport',
                 element: <SeeReport></SeeReport>
+            },
+            {
+                path:'/dashboard/myproducts',
+                element: <MyProdeuct></MyProdeuct>
             },
             {
                 path:'/dashboard/payment/:id',

@@ -40,8 +40,7 @@ const ReportModal = ({product}) => {
 
             <input name='name' type="text" defaultValue={user?.displayName} disabled placeholder="Your Name" className="input w-full input-bordered" />
             <input name='email' type="text" defaultValue={user?.email} disabled placeholder="Email Address" className="input w-full input-bordered" />
-            <input name='location' type="text" placeholder="Location" className="input w-full input-bordered" />
-            <textarea name="comment" id="" cols="15" rows="5"></textarea>
+            <textarea name="comment" id="" cols="15" className='bg-gray-100 border rounded p-2' placeholder='Please Comment here' rows="5"></textarea>
             <br />
             <input type="submit" className='btn btn-primary' value="Submit" />
            

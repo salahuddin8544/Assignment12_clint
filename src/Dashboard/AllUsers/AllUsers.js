@@ -1,10 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
-import { FaTrashAlt } from 'react-icons/fa';
-import Loading from '../../Loading/Loading';
+import toast from 'react-hot-toast';
+
 
 const AllUsers = () => {
-    
     // get all  users from database and set it ui 
     const url = `http://localhost:5000/users`;
     const {data:users,isLoading,refetch} = useQuery({
@@ -16,10 +15,51 @@ const AllUsers = () => {
        }        
     })
 
-    if(isLoading){
-        return <Loading > </Loading>
-    }
-    console.log(users)
+
+//------- make admin handlar   ----------/ 
+const handleMakeAdmin = (_id) => {
+    console.log(_id)
+    fetch(`http://localhost:5000/users/admin/${_id}`, {
+        method: 'PUT',
+        headers: {
+            authorization: `bearer ${localStorage.getItem('accessToken')}`
+        }
+    })
+
+    .then(res => res.json())
+    .then(data  => {
+        if( data.modifiedCount >  0){
+            toast('make admin')
+            
+            refetch()
+  
+          }
+        console.log(data)
+    })
+}
+
+
+// // delete order from database 
+const deleteUser = email => {
+
+    fetch(`http://localhost:5000/users/${email}`,{
+        method:'PUT',
+        headers:{
+
+            authorization:`bearer ${localStorage.getItem('accessToken') }`,
+
+        }
+
+    })
+    .then(res => res.json())
+    .then(data => {
+        if(data.deletedCount === 1){
+            toast.success('Successfully user deleted')
+             refetch()
+        }
+    })
+}
+
     return (
         <div>
             <h2 className='text-2xl font-bold my-3 text-primary'> Manage all  users  </h2>
@@ -45,8 +85,8 @@ const AllUsers = () => {
                 <td>{user.name}  </td>
                 <td> {user.email} </td>
                 <td> {user.UserType} </td>
-                <td> <button className='btn btn-primary btn-sm text-white ' > Make Admin </button> </td>
-                <td> <button className='btn bg-blue-500 btn-sm text-white' > Delete <FaTrashAlt className='ml-2'/> </button> </td>
+                <td> <button className='btn btn-primary btn-sm text-white '  onClick={()=> handleMakeAdmin(user._id)}> Make Admin </button> </td>
+                <td> <button className='btn bg-blue-500 btn-sm text-white' onClick={()=>deleteUser(user.email)}> Delete </button> </td>
             </tr> )
             :
             ''
