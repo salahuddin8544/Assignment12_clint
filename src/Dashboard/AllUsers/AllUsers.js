@@ -7,7 +7,7 @@ import Loading from '../../Loading/Loading';
 const AllUsers = () => {
     
     // get all  users from database and set it ui 
-    const url = `https://computer-reseller-server.vercel.app/users`;
+    const url = `http://localhost:5000/users`;
     const {data:users,isLoading,refetch} = useQuery({
        queryKey:['users'],
        queryFn: async() => {
@@ -18,18 +18,18 @@ const AllUsers = () => {
     })
 console.log('this is form users',users);
 
-//------- make admin handlar   ----------/ 
-const handleMakeAdmin = (_id) => {
-    console.log(_id)
-    fetch(`https://assignment12-server-beta.vercel.app/users/${_id}`, {
+const handleMakeAdmin = (_id)=>{
+    fetch(`http://localhost:5000/users/admin/${_id}`,{
         method: 'PUT',
-        headers: {
-            authorization:` bearer ${localStorage.getItem('accessToken')}`
+               headers: {
+           authorization: `bearer ${localStorage.getItem('accessToken')}`
+         
         }
     })
-
+    
     .then(res => res.json())
     .then(data  => {
+        console.log(data);
         if( data.modifiedCount >  0){
             toast.success('Admin created successfull')
             refetch()
@@ -37,12 +37,13 @@ const handleMakeAdmin = (_id) => {
           }
         console.log(data)
     })
-}
+    
 
+}
 // handle user verify 
 const handleUserVerify = (_id) => {
     console.log(_id)
-    fetch(`https://computer-reseller-server.vercel.app/users/verify/${_id}`, {
+    fetch(`https://assignment12-server-beta.vercel.app/users/verify/${_id}`, {
         method: 'PUT',
         headers: {
             authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -61,25 +62,22 @@ const handleUserVerify = (_id) => {
 }
 
 // // delete order from database 
-const deleteUser = email => {
-
-    fetch(`https://computer-reseller-server.vercel.app/users/${email}`,{
-        method:'PUT',
-        headers:{
-            authorization: `bearer ${localStorage.getItem('accessToken')}`,
-
-        }
-
+const handleDelete =(email)=>{
+    console.log(email);
+    fetch(`http://localhost:5000/users/${email}`,{
+        method:'PUT'
+    
     })
-    .then(res => res.json())
-    .then(data => {
-        if(data.deletedCount === 1){
-            toast.success('Successfully user deleted')
-             refetch()
-        }
+    .then(res=>res.json())
+    .then(data=> {
+        console.log(data);
+       if(data.deletedCount >0){
+        toast('user deleted')
+        refetch()
+       }
     })
+    
 }
-
 
     if(isLoading){
         return <Loading></Loading>
@@ -119,7 +117,7 @@ const deleteUser = email => {
                 
                 <td> { user.role !== 'admin' && <button onClick={()=> handleMakeAdmin(user._id)} className='btn btn-primary btn-sm text-white ' >  Make Admin <FaUserTie className='ml-2' />  </button> }  </td>
 
-                <td> <button onClick={()=> deleteUser(user.email)} className='btn bg-blue-500 btn-sm text-white' > Delete <FaTrashAlt className='ml-2'/> </button> </td>
+                <td> <button onClick={()=>handleDelete(user?.email)} className='btn bg-blue-500 btn-sm text-white' > Delete <FaTrashAlt className='ml-2'/> </button> </td>
             </tr> )
             :
             ''

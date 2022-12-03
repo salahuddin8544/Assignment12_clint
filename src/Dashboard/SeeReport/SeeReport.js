@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
 import Loading from '../../Loading/Loading';
+import { toast } from 'react-hot-toast';
 
 const SeeReport = () => {
     
@@ -16,6 +17,24 @@ const SeeReport = () => {
        }        
     })
 
+
+    const handleReport = email =>{
+        console.log(email);
+        fetch(`http://localhost:5000/reports/${email}`,{
+            method:'PUT'
+        })
+        .then(res=>res.json())
+    .then(data=> {
+        if(data.deletedCount){
+            refetch()
+            toast('Reports deleted')
+        }
+       if(data.deletedCount >0){
+      
+       }
+    })
+
+    }
     if(isLoading){
         return <Loading > </Loading>
     }
@@ -46,7 +65,7 @@ const SeeReport = () => {
                 <td> {user.email} </td>
                 <td> <img src={user.photo} className="w-20 h-20 rounded-md" alt='product img' />  </td>
                 <td>{user.comment}  </td>
-                <td> <button className='btn bg-blue-500 btn-sm text-white' > Delete <FaTrashAlt className='ml-2'/> </button> </td>
+                <td> <button className='btn bg-blue-500 btn-sm text-white' onClick={()=> handleReport(user.email)} > Delete <FaTrashAlt className='ml-2'/> </button> </td>
             </tr> )
             :
             ''

@@ -2,10 +2,11 @@ import { useQuery } from '@tanstack/react-query';
 import React,{useContext} from 'react';
 import Loading from '../../Loading/Loading';
 import { AuthContext } from '../../pages/context/AuthProvider';
+import { toast } from 'react-hot-toast';
 
 const MyProdeuct = () => {
      const {user} = useContext(AuthContext)
-    const url = `https://assignment12-server-beta.vercel.app/products?email=${user?.email}`
+    const url = `http://localhost:5000/products/${user?.email}`
     const {data:products,isLoading,refetch} = useQuery({
        queryKey:['products'],
        queryFn: async() => {
@@ -16,6 +17,21 @@ const MyProdeuct = () => {
     })
     if(isLoading){
         return <Loading > </Loading>
+    }
+    const handleproduct = (_id) =>{
+        console.log(_id);
+        fetch(`http://localhost:5000/products/${_id}`,{
+            method:'PUT'
+        })
+        .then(res=>res.json())
+    .then(data=> {
+
+       if(data.deletedCount >0){
+        refetch()
+        toast('Product deleted')
+       }
+    })
+
     }
     console.log(products)
     return (
@@ -32,6 +48,7 @@ const MyProdeuct = () => {
             <th> Product Image </th>
             <th>  Product Price </th>
             <th> ResalePrice </th>
+            <th> Delete </th>
         </tr>
         </thead>
         <tbody className='text-primary'>
@@ -43,6 +60,7 @@ const MyProdeuct = () => {
                 <td> <img src={product.photoURL} className="w-20 h-20 rounded-md" alt='product img' />  </td>
                 <td> {product.originalPrice} </td>
                 <td> {product.reselPrice} </td>
+                <td> <button  className='btn btn-primary' onClick={()=>handleproduct(product._id)}>Delete</button></td>
             </tr> )
             :
             ''

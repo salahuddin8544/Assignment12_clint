@@ -10,12 +10,14 @@ const Payment = () => {
     return (
         <div>
             <h2 className='text-2xl my-4'>Please pay  ${Price} for Your Product</h2>
-            <Elements stripe={stripePromise}>
+           <div className='w-96'>
+           <Elements stripe={stripePromise}>
       <CheckOutForm 
       
       booking = {booking}
       />
     </Elements>
+           </div>
         </div>
     );
 };

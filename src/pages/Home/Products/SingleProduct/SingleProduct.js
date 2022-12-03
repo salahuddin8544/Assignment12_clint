@@ -1,7 +1,7 @@
 
 import React from "react";
 
-const SingleProduct = ({product,setProduct,report,setReport}) => {
+const SingleProduct = ({product,setProduct,}) => {
      const {title,photoURL,brand,reselPrice,originalPrice,yearsOfUse,sellerLocation,sellerName} = product;
      
     const d = new Date();

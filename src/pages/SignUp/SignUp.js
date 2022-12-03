@@ -3,6 +3,7 @@ import { AuthContext } from '../context/AuthProvider';
 import { Link, useNavigate } from 'react-router-dom';
 import useToken from '../../Hook/useToken/useToken';
 const SignUp = () => {
+  const [errror, setEerror] = useState('')
   const navigate = useNavigate();
   const [createdUserEmail,setCreatedUserEmail] = useState('')
     const [token] = useToken(createdUserEmail)
@@ -27,7 +28,7 @@ const SignUp = () => {
 
         createUser(email,password)
         .then(result=>{
-          setCreatedUserEmail(email)
+          setCreatedUserEmail(result)
           const user = result.user;
           console.log(user);
           const userInfo={
@@ -61,7 +62,10 @@ const SignUp = () => {
       })
         
    })
-        .catch(err=>console.log(err))
+        .catch(err=>{
+          console.log(err);
+          setEerror(err.message)
+        })
     }
     return (
         <div className="hero w-full my-4">
@@ -94,12 +98,18 @@ const SignUp = () => {
               <option value="buyer">Buyer</option>
               <option value="seller">Seller</option>
               
-            </select>
+            </select>{
+              
+            }
+            {
+              <p>{errror}</p>
+            }
               </div>
               <div className="form-control mt-6">
                 <input type="submit" className='btn btn-success' value="Submit" />
               </div>
             </form>
+            
             <p className='text-center py-4'>Already have an account? <Link className='text-orange-700' to={'/login'}>Login</Link> </p>
           </div>
         </div>

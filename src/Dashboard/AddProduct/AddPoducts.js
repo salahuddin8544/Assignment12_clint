@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Toast  from 'react-hot-toast'
+import { AuthContext } from '../../pages/context/AuthProvider';
 const AddPoducts = () => {
+  const {user} = useContext(AuthContext)
+  const email = user?.email
     const d = new Date();
     let date = d.toLocaleDateString();
     const handleAddProduct =event=>{
+
         event.preventDefault();
         const form = event.target;
         const brand = form.name.value;
@@ -24,7 +28,8 @@ const AddPoducts = () => {
          title,
          category_id,
          yearsOfUse,
-         date
+         date,
+         email
         }
         console.log(addProduct);
         fetch('https://assignment12-server-beta.vercel.app/products', {

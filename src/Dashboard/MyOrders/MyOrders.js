@@ -3,12 +3,13 @@ import React, { useContext } from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../pages/context/AuthProvider';
+import { toast } from 'react-hot-toast';
 const MyOrders = () => {
     const {user} = useContext(AuthContext);
 
     const url = `https://assignment12-server-beta.vercel.app/bookings?email=${user?.email}`
     // use react query for get user product order info 
-    const {data:orders =[]} = useQuery ({
+    const {data:orders =[],refetch} = useQuery ({
         queryKey:['bookings',user?.email],
         queryFn: async()=> {
             const res = await fetch(url);
@@ -19,6 +20,24 @@ const MyOrders = () => {
     })
     console.log(orders)
 
+
+    //delete my orders
+    const handleDelete =(id)=>{
+        fetch(`http://localhost:5000/myorders/${id}`,{
+            method:'PUT',
+        
+        })
+        .then(res=>res.json())
+        .then(data=> {
+            if(data.deletedCount>0){
+                toast('Order Deleted')
+                refetch()
+                
+            }
+            console.log(data);
+        })
+        
+    }
     return (
         <div>
            <h2 className='text-2xl my-3 font-bold text-primary'> My Orders  {orders.length}   </h2>
@@ -56,7 +75,7 @@ const MyOrders = () => {
                     }
                     
                     </td>
-                <td> <button className='btn bg-red-500 ' > Delete <FaTrashAlt  /> </button> </td>
+                <td> <button className='btn bg-red-500 ' onClick={()=>handleDelete(order._id)} > Delete <FaTrashAlt  /> </button> </td>
             </tr> )
             :
             ''

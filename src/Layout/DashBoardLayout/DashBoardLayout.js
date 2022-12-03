@@ -30,9 +30,10 @@ console.log(isAdmin,isSeller)
           <label htmlFor="dashboard-drawer" className="drawer-overlay" />
           <ul className="menu mt-8 text-primary font-semibold p-4 w-80 bg-base-100 ">
 
-            { isSeller == "buyer" &&
-              <li ><NavLink  className="mt-4 bg-slate-200 " to='/dashboard'> My Orders </NavLink></li>
-            }
+            {
+              isSeller == "buyer" && 
+              <li ><NavLink  className="mt-4 bg-slate-200 " to='/dashboard/myorders'> My Orders </NavLink></li>
+            /* } */}
 
           
 
@@ -40,13 +41,17 @@ console.log(isAdmin,isSeller)
           {/* {isAdmin&& */}
           {
               <> 
-             { 
-              isAdmin && 
-              <li> <NavLink className="mt-4 bg-slate-300" to='/dashboard/allusers'> All Users</NavLink></li> 
-              &&
-             <li> <NavLink className="mt-4 bg-slate-300" to='/dashboard/seereport' > See Report </NavLink> </li>
-             }
-              
+             
+            
+          {
+            isAdmin &&
+            <div>
+                  <li> <NavLink className="mt-4 bg-slate-300" to='/dashboard/allusers'> All Users</NavLink></li> 
+         
+         <li> <NavLink className="mt-4 bg-slate-300" to='/dashboard/seereport' > See Report </NavLink> </li>
+             
+            </div>
+          }
                
                
              </>
@@ -54,8 +59,8 @@ console.log(isAdmin,isSeller)
                  
           }
               {/*isSeller?.role == "seller &&  isAdmin?.role == "admin"&&*/}
-          {/* { isSeller == "seller" && */}
-          {
+          { isSeller == "seller" &&
+          
                  <>
                 <li> <NavLink className="mt-4 bg-slate-200" to='/dashboard/myproducts' > My  Products </NavLink> </li> 
                  <li> <NavLink className="mt-4 bg-slate-200" to='/dashboard/addproducts' > Add Products </NavLink> </li>  

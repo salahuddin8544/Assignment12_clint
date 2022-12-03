@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider';
 
 const Login = () => {
+  const [errror, setError] = useState('')
     const {login,GoogleUser} = useContext(AuthContext)
     const navigate = useNavigate();
     const location = useLocation();
@@ -20,7 +21,10 @@ const Login = () => {
             navigate(from ,{replace:true})
             console.log(user);
           })
-          .catch(error=> console.log(error))
+          .catch(error=> {
+            console.log(error)
+            setError(error.message)
+          })
       }
       
   const handleGoogle=()=>{
@@ -54,6 +58,7 @@ const Login = () => {
                 <input type="submit" className='btn btn-success' value="Submit" />
               </div>
             </form>
+            <p className='text-orange-700'>{errror} </p>
             <button onClick={handleGoogle} className='btn btn-primary mx-8 text-white'> <FaGoogle className='mr-2'></FaGoogle>Login with Google</button>
             <p className='text-center py-4'>New to <span className='text-orange-700'>C</span>omputer<span className='text-orange-700'>H</span>ome? <Link className='text-orange-700' to={'/signup'}>SignUp</Link> </p>
           </div>
