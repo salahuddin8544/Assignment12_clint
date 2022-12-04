@@ -7,7 +7,7 @@ import Loading from '../../Loading/Loading';
 const AllUsers = () => {
     
     // get all  users from database and set it ui 
-    const url = `http://localhost:5000/users`;
+    const url = ` https://assignment12-server-beta.vercel.app/users`;
     const {data:users,isLoading,refetch} = useQuery({
        queryKey:['users'],
        queryFn: async() => {
@@ -19,7 +19,7 @@ const AllUsers = () => {
 console.log('this is form users',users);
 
 const handleMakeAdmin = (_id)=>{
-    fetch(`http://localhost:5000/users/admin/${_id}`,{
+    fetch(` https://assignment12-server-beta.vercel.app/users/admin/${_id}`,{
         method: 'PUT',
                headers: {
            authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -64,7 +64,7 @@ const handleUserVerify = (_id) => {
 // // delete order from database 
 const handleDelete =(email)=>{
     console.log(email);
-    fetch(`http://localhost:5000/users/${email}`,{
+    fetch(` https://assignment12-server-beta.vercel.app/users/${email}`,{
         method:'PUT'
     
     })

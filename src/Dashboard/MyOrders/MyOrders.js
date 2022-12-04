@@ -23,7 +23,7 @@ const MyOrders = () => {
 
     //delete my orders
     const handleDelete =(id)=>{
-        fetch(`http://localhost:5000/myorders/${id}`,{
+        fetch(` https://assignment12-server-beta.vercel.app/myorders/${id}`,{
             method:'PUT',
         
         })

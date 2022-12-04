@@ -20,7 +20,7 @@ const SeeReport = () => {
 
     const handleReport = email =>{
         console.log(email);
-        fetch(`http://localhost:5000/reports/${email}`,{
+        fetch(` https://assignment12-server-beta.vercel.app/reports/${email}`,{
             method:'PUT'
         })
         .then(res=>res.json())

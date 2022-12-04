@@ -6,7 +6,7 @@ import { toast } from 'react-hot-toast';
 
 const MyProdeuct = () => {
      const {user} = useContext(AuthContext)
-    const url = `http://localhost:5000/products/${user?.email}`
+    const url = ` https://assignment12-server-beta.vercel.app/products/${user?.email}`
     const {data:products,isLoading,refetch} = useQuery({
        queryKey:['products'],
        queryFn: async() => {
@@ -20,7 +20,7 @@ const MyProdeuct = () => {
     }
     const handleproduct = (_id) =>{
         console.log(_id);
-        fetch(`http://localhost:5000/products/${_id}`,{
+        fetch(` https://assignment12-server-beta.vercel.app/products/${_id}`,{
             method:'PUT'
         })
         .then(res=>res.json())
